@@ -5,3 +5,6 @@ Toma el color que está debajo del mouse y hace el cambio de color en el retroil
 Test: Corsair K55
 
 Librería para teclado en Linux: [CKB-Next](https://github.com/ckb-next/ckb-next)
+
+Seleccionar animación Pipe y configurar el nombre a /tmp/ckbpipe012 (u otro nombre y modificarlo en el script)
+
