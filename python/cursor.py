@@ -22,9 +22,14 @@ def get_pixel_colour(i_x, i_y):
 
 import subprocess
 import sys
+import os
 #gnuProcess = subprocess.Popen('/tmp/ckbpipe012', stdin=subprocess.PIPE)
-color = get_pixel_colour(0, 0)
-text="rgb 1:"+color+"ff"
-print(text)
+while (True):
+    color = get_pixel_colour(0, 0)
+    text="rgb "+color+"ff"
+    gnuProcess = open('/tmp/ckbpipe012','w')
+    gnuProcess.write(text)
+    gnuProcess.close()
+
  #   gnuProcess.stdin.write(text)
  #   gnuProcess.stdin.flush()
