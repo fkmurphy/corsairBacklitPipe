@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+from daemonize import Daemonize
+delay_time = 60
+pid = "./k55d.pid"
+
 def rgb2hex(r, g, b):
     return '{:02x}{:02x}{:02x}'.format(r, g, b)
 
@@ -7,8 +13,6 @@ def get_pixel_colour(i_x, i_y):
     import Xlib.display as display # python-xlib
     import Xlib.X as xlib
     screen = display.Display().screen().root
-#    o_x_root = Xlib.display.Display().create_resource_object('window',0x277075e).get_wm_class()
-#    print(o_x_root)
     cursor = screen.query_pointer()._data
     x = cursor["root_x"]
     y = cursor["root_y"]
@@ -20,16 +24,17 @@ def get_pixel_colour(i_x, i_y):
     b= int(lf_colour[2])
     return rgb2hex(r,g,b)
 
-import subprocess
-import sys
-import os
-#gnuProcess = subprocess.Popen('/tmp/ckbpipe012', stdin=subprocess.PIPE)
-while (True):
-    color = get_pixel_colour(0, 0)
-    text="rgb "+color+"ff"
-    gnuProcess = open('/tmp/ckbpipe012','w')
-    gnuProcess.write(text)
-    gnuProcess.close()
-
- #   gnuProcess.stdin.write(text)
- #   gnuProcess.stdin.flush()
+#import os
+def main():
+    while True:
+        try:
+            color = get_pixel_colour(0, 0)
+            text="rgb "+color+"ff"
+            gnuProcess = open('/tmp/ckbpipe012','w')
+            gnuProcess.write(text)
+            gnuProcess.close()
+        except Exception as error: 
+            print( "Falló",delay_time/60, " minutos volvera a intentarlointentarlo")
+            sleep(delay_time)
+daemon = Daemonize(app="K55CursorColor",pid=pid,action=main)
+daemon.start()
