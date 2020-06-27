@@ -8,3 +8,5 @@ Librería para teclado en Linux: [CKB-Next](https://github.com/ckb-next/ckb-next
 
 Seleccionar animación Pipe y configurar el nombre a /tmp/ckbpipe012 (u otro nombre y modificarlo en el script)
 
+# Daemonize Python
+Ejecute el script de python, es suficiente para iniciar en modo background. Para detenerlo, utilice el comando kill.
