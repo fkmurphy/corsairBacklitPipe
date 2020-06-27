@@ -12,6 +12,8 @@ hex2rgb() {
     echo $r$g$b"ff"
 }
 
+## No es realmente eficiente. 
+## realiza un screeshot y toma el color de la imagen
 scrot /tmp/copycolor.png
 eval $(xdotool getmouselocation --shell)
 IMAGE=`convert /tmp/copycolor.png -depth 8 -crop 1x1+$X+$Y txt:-`
