@@ -14,7 +14,7 @@ Ejecute el script de python, es suficiente para iniciar en modo background. Para
 ## Bash script GIT
 ### Al actualizar el prompt:
 En .zshrc o .bashrc insertar
-```
+```sh
 if [ -p '/tmp/ckbpipe012' ]; then
         PS1+='$(ckbgit)'
 fi
